@@ -43,12 +43,22 @@
         tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
 
+<androidx.core.widget.NestedScrollView
+    android:id="@+id/constraintLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:background="@drawable/show_details_shape"
+    android:visibility="@{vm.loader ? View.GONE : View.VISIBLE}"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="@+id/guideline">
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout3"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="match_parent"
             android:background="@drawable/show_details_shape"
             android:visibility="@{vm.loader ? View.GONE : View.VISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
@@ -80,16 +90,19 @@
                 app:layout_constraintTop_toTopOf="@+id/birthdate_txt"
                 tools:text="Type : Acting " />
 
-            <TextView
-                android:id="@+id/place_birth_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text='@{"Place Of Birth : "+person.place_of_birth}'
-                android:textSize="17sp"
-                app:layout_constraintStart_toStartOf="@+id/birthdate_txt"
-                app:layout_constraintTop_toBottomOf="@+id/birthdate_txt"
-                tools:text="Place Of Birth : Miami, Florida, USA" />
+        <TextView
+            android:id="@+id/place_birth_txt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:text='@{"Place Of Birth : "+person.place_of_birth}'
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/birthdate_txt"
+            app:layout_constraintTop_toBottomOf="@+id/birthdate_txt"
+            tools:text="Place Of Birth : Miami, Florida, USA" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -127,21 +140,23 @@
                 app:layout_constraintStart_toStartOf="@+id/textView7"
                 app:layout_constraintTop_toBottomOf="@+id/biography_txt" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/images_rcv"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/images_rcv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:layout_constraintVertical_bias="1.0" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
+</androidx.core.widget.NestedScrollView>
     <TextView
         android:visibility="@{vm.loader ? View.GONE : View.VISIBLE}"
         android:id="@+id/textView6"
