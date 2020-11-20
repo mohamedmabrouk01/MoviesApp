@@ -7,7 +7,10 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.request.RequestOptions
-
+import com.squareup.picasso.Picasso
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class DataBindAdapterUtils {
@@ -15,11 +18,17 @@ class DataBindAdapterUtils {
         @JvmStatic
         @BindingAdapter("app:loadImage", "app:placeHolder",requireAll = false)
         fun loadImages(view: ImageView, url: String?,placeholder: Drawable) {
-            url?.let {
-                Glide.with(view)
-                    .load(url)
-                    .apply(RequestOptions.placeholderOf(placeholder))
-                    .into(view)
+            url?.apply {
+//                Glide.with(view)
+//                    .load(url)
+//                       // .apply(RequestOptions.placeholderOf(placeholder))
+//                    .into(view)
+                Picasso.get()
+                        .load(this)
+                        .into(view)
+
+
+
             }
         }
 

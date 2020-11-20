@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:text="Hello World!"
         app:loaderColor="@color/purple_500"
-        app:loaderType="FoldingCube"
+        app:loaderType="Circle"
         app:showLoader="@{peopleVm.loader}"
         app:showError="@{peopleVm.error!=null}"
         app:enableRetry="@{peopleVm.error!=null}"

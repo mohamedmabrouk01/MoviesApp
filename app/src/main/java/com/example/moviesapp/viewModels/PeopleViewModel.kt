@@ -15,6 +15,7 @@ import com.example.moviesapp.data.models.PeopleDataSource
 import com.example.moviesapp.utils.network.RequestListener
 import com.example.moviesapp.viewModels.base.BaseViewModel
 import com.mabrouk.loaderlib.RetryCallBack
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
@@ -29,7 +30,7 @@ class PeopleViewModel<v : PeopleCallBack> @ViewModelInject constructor(applicati
     }
 
     fun loadData(){
-        loader.set(false)
+        loader.set(true)
         error.set(null)
         val flow =
             Pager(PagingConfig(pageSize = 20,enablePlaceholders = true)){

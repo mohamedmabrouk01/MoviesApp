@@ -32,7 +32,6 @@ class PeopleListActivity : AppCompatActivity() , PeopleCallBack, PeopleListAdapt
         viewModel.attachView(this)
         layoutBinding.peopleVm=viewModel
        viewModel.loadData()
-
     }
 
     override fun loadPeople(data: PagingData<People>) {
@@ -42,6 +41,6 @@ class PeopleListActivity : AppCompatActivity() , PeopleCallBack, PeopleListAdapt
     }
 
     override fun onPeopleClick(people: People) {
-
+        PersonDetailsActivity.start(people.id,this)
     }
 }
