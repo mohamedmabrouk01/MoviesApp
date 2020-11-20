@@ -11,22 +11,22 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviesapp.R
 import com.example.moviesapp.callBack.PeopleCallBack
 import com.example.moviesapp.data.models.People
-import com.example.moviesapp.databinding.ActivityMainBinding
+import com.example.moviesapp.databinding.ActivityPeopleListBinding
 import com.example.moviesapp.ui.adapters.PeopleListAdapter
 import com.example.moviesapp.viewModels.PeopleViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() , PeopleCallBack, PeopleListAdapter.PeopleListener {
-    lateinit var layoutBinding: ActivityMainBinding
+class PeopleListActivity : AppCompatActivity() , PeopleCallBack, PeopleListAdapter.PeopleListener {
+    lateinit var layoutBinding: ActivityPeopleListBinding
      val viewModel:PeopleViewModel<PeopleCallBack> by viewModels()
      val adapter: PeopleListAdapter by lazy {
          PeopleListAdapter(this)
      }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        layoutBinding=DataBindingUtil.setContentView(this,R.layout.activity_main)
+        layoutBinding=DataBindingUtil.setContentView(this,R.layout.activity_people_list)
         layoutBinding.peopleRcv.layoutManager = GridLayoutManager(this,2,LinearLayoutManager.VERTICAL,false)
         layoutBinding.peopleRcv.adapter=adapter
         viewModel.attachView(this)
