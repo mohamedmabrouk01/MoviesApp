@@ -7,6 +7,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.annotation.GlideModule
 import com.bumptech.glide.request.RequestOptions
+import com.santalu.aspectratioimageview.AspectRatioImageView
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
@@ -26,6 +27,23 @@ class DataBindAdapterUtils {
                 Picasso.get()
                         .load(this)
                         .into(view)
+
+
+
+            }
+        }
+
+        @JvmStatic
+        @BindingAdapter("app:loadAspectImage",requireAll = false)
+        fun loadAspecImages(view: AspectRatioImageView, url: String?) {
+            url?.apply {
+//                Glide.with(view)
+//                    .load(url)
+//                       // .apply(RequestOptions.placeholderOf(placeholder))
+//                    .into(view)
+                Picasso.get()
+                    .load(this)
+                    .into(view)
 
 
 

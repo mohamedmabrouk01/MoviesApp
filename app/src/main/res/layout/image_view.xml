@@ -13,9 +13,9 @@
         android:background="@drawable/show_details_shape"
         >
 
-    <ImageView
-        android:scaleType="centerCrop"
+    <com.santalu.aspectratioimageview.AspectRatioImageView
         android:id="@+id/preview_img"
+        android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -25,8 +25,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
         android:adjustViewBounds="true"
-        app:loadImage="@{image.image}"
-        app:placeHolder="@{@drawable/man}"
+        app:loadAspectImage="@{image.image}"
         tools:srcCompat="@drawable/man" />
 
         <ImageButton

@@ -103,8 +103,11 @@ class PersonViewModel<v : PersonDetailsCallBack> @ViewModelInject constructor(
                         call: Call<ResponseBody>,
                         response: Response<ResponseBody>
                     ) {
-                        val bitmap = BitmapFactory.decodeStream(response.body()?.byteStream())!!
-                        Toast.makeText(context,if (FileUtils.saveImage(bitmap)) "Saved" else "Fail" , Toast.LENGTH_SHORT).show()
+
+                        val bitmap = BitmapFactory.decodeStream(response.body()?.byteStream())
+                        bitmap?.let {
+                            Toast.makeText(context,if (FileUtils.saveImage(it)) "Saved" else "Fail" , Toast.LENGTH_SHORT).show()
+                        }
                     }
 
                     override fun onFailure(call: Call<ResponseBody>, t: Throwable) {

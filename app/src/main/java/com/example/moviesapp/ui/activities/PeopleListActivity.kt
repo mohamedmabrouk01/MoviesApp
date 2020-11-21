@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.paging.PagingData
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,8 +21,8 @@ import kotlinx.coroutines.launch
 @AndroidEntryPoint
 class PeopleListActivity : AppCompatActivity() , PeopleCallBack, PeopleListAdapter.PeopleListener {
     lateinit var layoutBinding: ActivityPeopleListBinding
-     val viewModel:PeopleViewModel<PeopleCallBack> by viewModels()
-     val adapter: PeopleListAdapter by lazy {
+    private  val viewModel:PeopleViewModel<PeopleCallBack> by viewModels()
+     private val adapter: PeopleListAdapter by lazy {
          PeopleListAdapter(this)
      }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,4 +44,7 @@ class PeopleListActivity : AppCompatActivity() , PeopleCallBack, PeopleListAdapt
     override fun onPeopleClick(people: People) {
         PersonDetailsActivity.start(people.id,this)
     }
+
+
+
 }

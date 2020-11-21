@@ -7,10 +7,12 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.example.moviesapp.callBack.PeopleCallBack
 import com.example.moviesapp.data.api.MovieRepository
 import com.example.moviesapp.data.models.MovieResponse
+import com.example.moviesapp.data.models.People
 import com.example.moviesapp.data.models.PeopleDataSource
 import com.example.moviesapp.utils.network.RequestListener
 import com.example.moviesapp.viewModels.base.BaseViewModel
@@ -23,6 +25,7 @@ import kotlinx.coroutines.launch
 class PeopleViewModel<v : PeopleCallBack> @ViewModelInject constructor(application: Application, val repository: MovieRepository) : BaseViewModel<v>(application){
     var loader:ObservableBoolean = ObservableBoolean()
     var error:ObservableField<String> = ObservableField()
+    lateinit var data:PagingData<People>
     var retryCallBack:RetryCallBack = object : RetryCallBack{
         override fun onRetry() {
            loadData()
@@ -39,7 +42,8 @@ class PeopleViewModel<v : PeopleCallBack> @ViewModelInject constructor(applicati
 
         viewModelScope.launch {
             flow.collect {
-               view.loadPeople(it)
+                data=it
+               view.loadPeople(data)
             }
         }
 

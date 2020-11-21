@@ -38,7 +38,7 @@ class PreviewImageFragment : BottomSheetDialogFragment() , PersonDetailsCallBack
           viewModel.attachView(this)
           viewModel.image=parcelable
           layoutBinding.image=parcelable
-
+          layoutBinding.previewImg.ratio=parcelable.aspect_ratio
           layoutBinding.downloadImg.setOnClickListener {
               if (checkPermission()){
                   viewModel.downloadImage()
